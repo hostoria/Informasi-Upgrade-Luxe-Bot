@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Luxe Bot V5</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #0f0f0f;
+      color: white;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* CONTAINER UTAMA */
+    .main-container {
+      margin: 50px auto 20px;
+      padding: 20px;
+      background: #1a1a1a;
+      border-radius: 20px;
+      box-shadow: 0 0 15px #333;
+      width: 320px;
+      animation: containerWave 1.2s ease-in-out;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes containerWave {
+      0% {
+        opacity: 0;
+        transform: scale(0.95) translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .main-container h1 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #38bdf8;
+    }
+
+    .feature-box {
+      background: #2e2e2e;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .description {
+      margin: 10px 0;
+      background: #262626;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .chat-button {
+      margin-top: 15px;
+      background: #22c55e;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .chat-button:hover {
+      background: #16a34a;
+    }
+
+    .chat-button a {
+      color: white;
+      text-decoration: none;
+      display: block;
+    }
+
+    /* HOTBAR GELOMBANG DI BAWAH */
+    .hotbar {
+      width: 100%;
+      height: 60px;
+      position: relative;
+      overflow: hidden;
+      background: #0f172a;
+      margin-top: auto;
+    }
+
+    .hotbar svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 100%;
+      animation: wave-move 8s linear infinite, hue-shift 20s infinite linear;
+    }
+
+    @keyframes wave-move {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes hue-shift {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CONTAINER UTAMA -->
+  <div class="main-container">
+    <h1>Luxe Bot V5</h1>
+
+    <div class="feature-box">
+      <span>Fitures 13</span>
+      <span>Fix 2</span>
+    </div>
+
+    <div class="description">
+      1. Fitures 13: Setbotname, Delsetbotname, setppbot, delppbot, setbotbio, delsetbio, public, self, bljpm, jpmtesti, getcontact, cekidgc, cekidch, emojimix, sticker, tourl, readqr
+    </div>
+
+    <div class="description">
+      2. Fix: Baileys-pro, Tampilan UI Terminal Index
+    </div>
+
+    <button class="chat-button">
+      <a href="https://wa.me/6283133675770" target="_blank">Chat Me</a>
+    </button>
+
+    <!-- Tambahkan Judul Baru di Bawah Ini -->
+    <!--
+    <div class="description">
+      3. Judul Baru: Tambahkan teksmu di sini.
+    </div>
+    -->
+
+  </div>
+
+  <!-- HOTBAR GELOMBANG DI BAWAH -->
+  <div class="hotbar">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M0,32 C150,100 350,0 600,32 C850,64 1050,0 1200,32 L1200,0 L0,0 Z" 
+            fill="url(#waveGradient)"></path>
+      <defs>
+        <linearGradient id="waveGradient" gradientTransform="rotate(90)">
+          <stop offset="0%" stop-color="#0ea5e9" />
+          <stop offset="50%" stop-color="#38bdf8" />
+          <stop offset="100%" stop-color="#22d3ee" />
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+</body>
+  </html>
