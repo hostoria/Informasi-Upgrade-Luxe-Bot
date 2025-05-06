@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Luxe Bot Upgrade</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }body {
+  background: #0f0f0f;
+  color: white;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+.main-container {
+  margin: 50px auto 20px;
+  padding: 20px;
+  background: #1a1a1a;
+  border-radius: 20px;
+  box-shadow: 0 0 15px #333;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #38bdf8;
+}
+
+.feature-box {
+  background: #2e2e2e;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.description {
+  margin: 10px 0;
+  background: #262626;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.chat-button {
+  margin-top: 15px;
+  background: #22c55e;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.chat-button:hover {
+  background: #16a34a;
+}
+
+.chat-button a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: white;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.floating-panel {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 280px;
+  background: #1e1e1e;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  display: none;
+  z-index: 1001;
+}
+
+.floating-panel select,
+.floating-panel .info {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.info {
+  background: #2e2e2e;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+}
+
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <h1>Luxe Bot V5</h1>
+    <div class="feature-box">
+      <span>Fitures 13</span>
+      <span>Fix 2</span>
+    </div>
+    <div class="description">
+      1. Fitures 13: Setbotname, Delsetbotname, setppbot, delppbot, setbotbio, delsetbio, public, self, bljpm, jpmtesti, getcontact, cekidgc, cekidch, emojimix, sticker, tourl, readqr
+    </div>
+    <div class="description">
+      2. Fix: Baileys-pro, Tampilan UI Terminal Index
+    </div>
+    <button class="chat-button">
+      <a href="https://wa.me/6283133675770" target="_blank">Chat Me</a>
+    </button>
+  </div><button class="floating-button" onclick="togglePanel()">+</button>
+
+  <div class="floating-panel" id="panel">
+    <select id="userSelect" onchange="displayInfo()">
+      <option value="">Pilih....</option>
+    </select>
+    <div class="info" id="userInfo">Kosong dulu</div>
+  </div>  <script src="settings.js"></script>  <script>
+    const data = window.userData;
+    const select = document.getElementById('userSelect');
+    const infoBox = document.getElementById('userInfo');
+
+    function togglePanel() {
+      const panel = document.getElementById('panel');
+      panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function displayInfo() {
+      const value = select.value;
+      if (value && data[value]) {
+        const item = data[value];
+        const beli = new Date(item.tanggal);
+        const waktuPakai = item.waktuPakai;
+        const selesai = new Date(beli);
+        selesai.setMonth(selesai.getMonth() + waktuPakai);
+
+        infoBox.innerHTML = `
+  <strong>Nama:</strong> ${item.nama}<br>
+  <strong>Status:</strong> ${item.status}<br>
+  <strong>Nomor:</strong> ${item.nomor}<br>
+  <strong>Pterodactyl:</strong><br>
+  &nbsp;&nbsp;- Ram: ${item.ram}<br>
+  &nbsp;&nbsp;- Disk: ${item.disk}<br>
+  &nbsp;&nbsp;- CPU: ${item.cpu}<br>
+  &nbsp;&nbsp;- Server: ${item.server}<br>
+  <strong>Tanggal Beli:</strong> ${item.tanggal}<br>
+  <strong>Waktu Pakai:</strong> ${waktuPakai} Bulan<br>
+  <strong>Waktu Selesai:</strong> ${selesai.toLocaleDateString('id-ID')}
+`;
+      } else {
+        infoBox.innerHTML = 'Kosong dulu';
+      }
+    }
+
+    window.onload = () => {
+      Object.keys(data).forEach(key => {
+        const opt = document.createElement('option');
+        opt.value = key;
+        opt.textContent = data[key].nama;
+        select.appendChild(opt);
+      });
+    }
+  </script>
+  </body>
+</html>
